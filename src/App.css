@@ -1,7 +1,50 @@
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,400;1,800&family=Yellowtail&display=swap');
+
+:root {
+  --base: #e63946;
+  --light-text: #f1faee;
+  --light-background: #a8dadc;
+  --dark-text: #1d3557;
+}
+
+body * {
+  font-family: 'Open Sans', sans-serif;
+}
+
 .movie-contianer {
-  position: relative;  
+  position: relative;
 }
 
 .poster {
   width: 100%;
+}
+
+.container-header {
+  display: flex;
+  height: 30vh;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: var(--base);
+  margin-bottom: 30px;
+}
+.container-header p{
+  font-size: 50px;
+  margin: 0;
+}
+
+.container-header h1 {
+  font-family: 'Yellowtail', cursive;
+  font-size: 80px;
+  color: var(--light-text);
+  margin-top: 30px;
+  margin-bottom: 0;
+}
+
+.container-footer {
+  text-align: center;
+  font-weight: bolder;
+  padding: 20px 0 40px;
+  background-color: var(--light-background);
+  color: var(--dark-text); 
 }
