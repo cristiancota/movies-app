@@ -20,7 +20,7 @@ export default function App() {
         <span role="img" aria-label="popcorn">🍿</span>
       </div>
       <div className="container">
-        <h2>Popular Movies</h2>
+        <h2>Top Rated Movies</h2>
         <div className="row">
           {movies.response.results.map((current) => {
             return (
