@@ -17,7 +17,7 @@ export default function App() {
     <div className="app">
       <div className="container-fluid container-header">
         <h1>Movies App</h1>
-        <p>🍿</p>
+        <span role="img" aria-label="popcorn">🍿</span>
       </div>
       <div className="container">
         <h2>Popular Movies</h2>
