@@ -1,41 +1,30 @@
 import React from "react";
+import { BrowserRouter, Route, Switch, Link } from "react-router-dom";
 import "./App.css";
+import Movies from "./Movies.js"; // TODO merge Movie and PopularMovies to a single component
+import PopularMovies from "./PopularMovies.js";
 import Movie from "./Movie.js";
-import useFetch from "./useFetch.js";
 
 export default function App() {
-  const movies = useFetch(
-    "https://api.themoviedb.org/3/movie/top_rated?api_key=30462510f8221c4dff12dd51874f0158&language=en-US&page=1",
-    {}
-  );
-
-  if (!movies.response) {
-    return <div>Loading...</div>;
-  }
-
   return (
-    <div className="app">
-      <div className="container-fluid container-header">
-        <h1>Movies App</h1>
-        <span role="img" aria-label="popcorn">🍿</span>
+    <BrowserRouter>
+      {/* TODO create nav component */}
+      <div>
+        <ul>
+          <li>
+            <Link to="/top">Top</Link>
+          </li>
+          <li>
+            <Link to="/popular">Popular</Link>
+          </li>
+        </ul>
       </div>
-      <div className="container">
-        <h2>Top Rated Movies</h2>
-        <div className="row">
-          {movies.response.results.map((current) => {
-            return (
-              <Movie
-                key={current.id}
-                title={current.title}
-                poster={current.poster_path}
-              />
-            );
-          })}
-        </div>
-      </div>
-      <div className="container-fluid container-footer">
-        <p>This is footer</p>
-      </div>
-    </div>
+
+      <Switch>
+        <Route path="/top" exact component={Movies} />
+        <Route path="/popular" exact component={PopularMovies} />
+        <Route path="/movie/:movieId" exact component={Movie} />
+      </Switch>
+    </BrowserRouter>
   );
 }
