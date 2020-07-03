@@ -1,18 +1,26 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import PosterMovie from "./PosterMovie.js";
-import useFetch from "./useFetch.js";
 
 export default function Movies(props) {
   function handleClick(key) {
     props.history.push("movie/" + key);
   }
 
-  const movies = useFetch(
-    "https://api.themoviedb.org/3/movie/top_rated?api_key=30462510f8221c4dff12dd51874f0158&language=en-US&page=1",
-    {}
-  );
+  const url = `https://api.themoviedb.org/3/movie/${props.apiMethod}?api_key=30462510f8221c4dff12dd51874f0158&language=en-US&page=1`;
+  const [movies, setMovies] = useState(null);
 
-  if (!movies.response) {
+  useEffect(() => {
+    const fetchMovie = async () => {
+      fetch(url)
+        .then((response) => response.json())
+        .then((result) => {
+          setMovies(result);
+        });
+    };
+    fetchMovie();
+  }, [url]);
+
+  if (!movies) {
     return <div>Loading...</div>;
   }
 
@@ -27,7 +35,7 @@ export default function Movies(props) {
       <div className="container">
         <h2>Top Rated Movies</h2>
         <div className="row">
-          {movies.response.results.map((current) => {
+          {movies.results.map((current) => {
             return (
               <PosterMovie
                 key={current.id}

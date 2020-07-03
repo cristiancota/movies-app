@@ -1,9 +1,8 @@
 import React from "react";
 import { BrowserRouter, Route, Switch, Link } from "react-router-dom";
 import "./App.css";
-import Movies from "./Movies.js"; // TODO merge Movie and PopularMovies to a single component
-import PopularMovies from "./PopularMovies.js";
-import Movie from "./Movie.js";
+import Movies from "./Movies.js";
+import MovieDetails from "./MovieDetails.js";
 
 export default function App() {
   return (
@@ -21,9 +20,17 @@ export default function App() {
       </div>
 
       <Switch>
-        <Route path="/top" exact component={Movies} />
-        <Route path="/popular" exact component={PopularMovies} />
-        <Route path="/movie/:movieId" exact component={Movie} />
+        <Route
+          path="/top"
+          exact
+          render={(props) => <Movies {...props} apiMethod="top_rated" />}
+        />
+        <Route
+          path="/popular"
+          exact
+          render={(props) => <Movies {...props} apiMethod="popular" />}
+        />
+        <Route path="/movie/:movieId" exact component={MovieDetails} />
       </Switch>
     </BrowserRouter>
   );

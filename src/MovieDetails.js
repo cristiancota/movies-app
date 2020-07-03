@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 
-function Movie(props) {
+function MovieDetails(props) {
   const url = `https://api.themoviedb.org/3/movie/${props.match.params.movieId}?api_key=30462510f8221c4dff12dd51874f0158&language=en-US&page=1`;
   const [movie, setMovie] = useState(null);
 
@@ -26,8 +26,8 @@ function Movie(props) {
           <div className="col-2 offset-2">
             <img
               src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`}
-                className="img-fluid"
-                alt={`${movie.title} poster`}
+              className="img-fluid"
+              alt={`${movie.title} poster`}
             />
           </div>
           <div className="col-6">
@@ -39,4 +39,4 @@ function Movie(props) {
   );
 }
 
-export default Movie;
+export default MovieDetails;
