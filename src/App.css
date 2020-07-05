@@ -82,6 +82,7 @@ a.navbar-brand span {
 .pagination-container .page-item.active .page-link {
   background-color: var(--base);
   border-color: var(--base);
+  color: var(--light-text)
 }
 
 .pagination-container .page-item .page-link {
