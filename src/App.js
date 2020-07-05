@@ -58,7 +58,7 @@ export default function App() {
         <Route
           path="/upcoming/:pageNumber"
           render={(props) => (
-            <Movies {...props} apiMethod="upcoming" title="upcoming Movies" />
+            <Movies {...props} apiMethod="upcoming" title="Upcoming Movies" />
           )}
         />
         <Route path="/movie/:movieId" exact component={MovieDetails} />
