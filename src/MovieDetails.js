@@ -19,9 +19,7 @@ function MovieDetails(props) {
 
   return (
     <div className="movie-details-container container">
-      {console.log(movie)}
       <div className="movie-details">
-        <h2 className="text-center">{movie.title}</h2>
         <div className="row">
           <div className="col-2 offset-2">
             <img
@@ -31,7 +29,27 @@ function MovieDetails(props) {
             />
           </div>
           <div className="col-6">
+            <h3>{movie.title}</h3>
+            <p>
+              <strong>Overview:</strong>
+            </p>
             <p>{movie.overview}</p>
+            <p>
+              <strong>Release Date:</strong>
+            </p>
+            <p>{movie.release_date}</p>
+            <p>
+              <strong>Vote Average:</strong>
+            </p>
+            <p>{movie.vote_average}</p>
+            <p>
+              <strong>{movie.genres.length > 1 ? 'Genres' : 'Genre'}:</strong>
+            </p>
+            <ul>
+              {movie.genres.map((genre) => {
+                return <li>{genre.name}</li>;
+              })}
+            </ul>
           </div>
         </div>
       </div>
